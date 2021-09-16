@@ -6,10 +6,11 @@
     <meta name="csrf-token" content="{{csrf_token()}}">
     <title>{{config("app.name", 'User Management System')}}</title>
  <!-- Styles -->
-    <link rel="stylesheet" href="{{'css/app.css'}}">
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
+    
 
 {{-- JavaScript --}}
-<script src="{{'js/app.js'}}" defer></script>
+<script src="{{asset('js/app.js')}}" defer></script>
 
 </head>
 <body>
@@ -38,8 +39,7 @@
             <a href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">logout</a>
 
             <form  id="logout-form" action="{{route('logout')}}" method="POST" style="display: none">
-                @csrf            z
-
+                @csrf            
             </form>
         @else
             <a href="{{ route('login') }}" >Log in</a>

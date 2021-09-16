@@ -1,6 +1,5 @@
 @extends('templates.main')
 
-
 @section('content')
 <h1 class="text-center mb-3">login</h1>
 <form method="POST" action="{{route('login')}}">
