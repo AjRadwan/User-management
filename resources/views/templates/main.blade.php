@@ -27,7 +27,7 @@
         <a class="nav-link active" href="#">Home</a>
     </li>
     <li class="nav-item">
-         <a class="nav-link active" href="#">User</a>
+         <a class="nav-link active" href="{{route('admin.users.index')}}">User</a>
     </li>
  </ul>
 <div class="d-flex">
@@ -38,7 +38,7 @@
             <a href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">logout</a>
 
             <form  id="logout-form" action="{{route('logout')}}" method="POST" style="display: none">
-                @csrf
+                @csrf            z
 
             </form>
         @else
