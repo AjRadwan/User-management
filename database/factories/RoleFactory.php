@@ -22,7 +22,13 @@ class RoleFactory extends Factory
     public function definition()
     {
         return [
-            //
+            
+             'name' => $this->faker->title,
+             'city' => $this->faker->city    ,    
+             'state  ' => $this->faker->state      ,    
+              'address' => $this->faker->address  ,                           
+             'phone' => $this->faker->phoneNumber ,            
+             'job' => $this->faker->jobTitle                             
         ];
     }
 }
