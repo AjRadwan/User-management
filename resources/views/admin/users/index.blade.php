@@ -1,8 +1,8 @@
 @extends('templates.main') 
 @section('content')
-    <H2 class="text-center">Users</H2>
+    <H2 class="text-center mb-4">Users</H2>
     <div class="card">
-        <table class="table">
+        <table class="table table-dark table-hover">
             <thead>
               <tr>
                 <th scope="col">id</th>
@@ -11,6 +11,7 @@
                 <th scope="col">Action</th>
               </tr>
             </thead>
+            
             <tbody>
               <tr>
                 <th scope="row">1</th>
