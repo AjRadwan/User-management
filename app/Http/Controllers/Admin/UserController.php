@@ -14,7 +14,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index() {
-       return view('admin.users.index', ['users' => User::all()]);
+       return view('admin.users.index', ['users' => User::paginate(12)]);
     }
 
     /**
@@ -80,6 +80,9 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+       dd($id);
+
+    //    User::destroy($id);
+    //    return redirect(route('admin.users.index'));
     }
 }
