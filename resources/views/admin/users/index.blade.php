@@ -26,17 +26,17 @@
     <td>{{$user->email}}</td>
     <td>
         <a type="button" href="{{route('admin.users.edit', $user->id)}}" class="btn btn-light" role="button">Edit</a>
-
-        <button type="button" class="btn btn-danger" 
-        onclick="event.preventDefault(); 
+   
+        <button type="button" class="btn btn-danger"
+        onclick="event.preventDefault();
         document.getElementById('delete-user-form-{{$user->id}}').submit()">
-        Delete
+            Delete
         </button>
 
-        <form id="delete-user-form-{{$user->id}}" action="{{route('admin.users.destroy', $user->id)}}" method="POST" style="display: none"
-        @csrf 
-        @method("DELETE")
-        ></form>
+        <form id="delete-user-form-{{$user->id}}" action="{{route('admin.users.destroy', $user->id)}}" method="POST" style="display: none">
+          @csrf
+          @method("DELETE")
+        </form>
     </td>
     </tr>
 <tr>
