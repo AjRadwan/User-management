@@ -37,9 +37,9 @@ class UserController extends Controller
         $validate = $request->validated();
        
          $user = User::create($validate);
-        //  $user = User::create($request->except(['_token', 'roles']));
+        // $user = User::create($request->except(['_token', 'roles']));
          $user->roles()->sync($request->roles);
-        $request->session()->flash('success', 'The User Has been Created');
+         $request->session()->flash('success', 'The User Has been Created');
          return redirect(route('admin.users.index'));
     }
 
