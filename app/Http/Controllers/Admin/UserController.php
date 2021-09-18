@@ -33,10 +33,17 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-         $user = User::create($request->except(['_token', 'roles']));
+    public function store(Request $request){
+        $validate = $request->validate([
+           'name' => 'required|max:200',
+           'email' => 'required|max:200|unique:users',
+           'password' => 'required|min:8|max:200',
+        ]);
+       
+         $user = User::create($validate);
+        //  $user = User::create($request->except(['_token', 'roles']));
          $user->roles()->sync($request->roles);
+        $request->session()->flash('success', 'The User Has been Created');
          return redirect(route('admin.users.index'));
     }
 
@@ -62,7 +69,9 @@ class UserController extends Controller
         return view('admin.users.edit',
          [
             'roles' => Role::all(),
-            'user' => User::find($id)
+            'user' => User::find($id),
+       
+
         ]);    
       
     }
@@ -79,6 +88,8 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->update($request->except(['_token', 'roles']));
         $user->roles()->sync($request->roles);
+       $request->session()->flash('success', 'The User Has been Update');
+
         return redirect(route('admin.users.index'));
     }
 
@@ -88,9 +99,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id, Request $request)
-    {
+
+    public function destroy($id, Request $request){
        User::destroy($id);
+       $request->session()->flash('success', 'The User Has been Deleted');
        return redirect(route('admin.users.index'));
     }
 }
