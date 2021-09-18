@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use App\Http\Requests\StoreUserRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -33,12 +33,8 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request){
-        $validate = $request->validate([
-           'name' => 'required|max:200',
-           'email' => 'required|max:200|unique:users',
-           'password' => 'required|min:8|max:200',
-        ]);
+    public function store(StoreUserRequest $request){
+        $validate = $request->validated();
        
          $user = User::create($validate);
         //  $user = User::create($request->except(['_token', 'roles']));
