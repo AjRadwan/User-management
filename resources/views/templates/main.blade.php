@@ -23,9 +23,9 @@
        </a>
      
  
-<div class="d-flex">
+<div class="d-flex p-3">
 @if (Route::has('login'))
-    <div >
+    <div class="">
         @auth
             <a href="{{ url('/home') }}" >Home</a>
             <a href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">logout</a>
@@ -43,12 +43,10 @@
     </div>
 @endif 
 </div>
-  
-    </div>
-
+  </div>
  </nav>
 
- <nav class="navbar navbar-expand-lg">
+ <nav class="navbar navbar-expand-lg p-3">
  <div class="collapse navbar-collapse">
     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
@@ -62,6 +60,7 @@
 </div>
 
 </nav>
+
 </div>
 
     {{-- Main templates from here --}}

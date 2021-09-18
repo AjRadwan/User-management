@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
+use Illuminate\Support\Facades\Gate;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -15,6 +17,9 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index() {
+        if(Gate::denies('logged-in')){
+            dd('no acces');
+        }
        return view('admin.users.index', ['users' => User::paginate(12)]);
     }
 
