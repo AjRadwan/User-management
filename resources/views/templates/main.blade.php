@@ -58,7 +58,9 @@
 </div>
 
     {{-- Main templates from here --}}
+
         <main class="container">
+            @include('partials.alert')
             @yield('content')
         </main>
          
