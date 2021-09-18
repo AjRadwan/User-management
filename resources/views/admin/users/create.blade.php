@@ -4,7 +4,7 @@
 @section('content')
 <h1 class="text-center mb-3">Create New User</h1>
 <div class="card p-5">
-<form method="POST" action="{{route('admin.users.create')}}">
+<form method="POST" action="{{route('admin.users.store')}}">
     @csrf
     <div class="mb-3">
         <label  class="form-label">Name</label>
@@ -34,6 +34,18 @@
             {{ $message }}
         </span>
         @enderror
+    </div>
+    <div class="mb-3">
+        @foreach ($roles as $role)
+            <div class="form-check">
+                <input class="form-check-input" name="roles[]"
+                type="checkbox" value="{{$role->id}}" id="{{$role->name}}">
+
+                <label class="form-check-label" for="{{$role->name}}">
+                    {{$role->name}}
+                </label>
+            </div>
+        @endforeach
     </div>
 
            <button type="submit" class="btn btn-primary">Sign</button>
