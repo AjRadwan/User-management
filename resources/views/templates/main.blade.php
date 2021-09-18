@@ -46,6 +46,8 @@
   </div>
  </nav>
 
+
+@can('logged-in') 
  <nav class="navbar navbar-expand-lg p-3">
  <div class="collapse navbar-collapse">
     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -56,10 +58,11 @@
             <a class="nav-link active" href="{{route('admin.users.index')}}">User</a>
         </li>
      </ul>
+    </nav>
+    @endcan
 </div>
 </div>
 
-</nav>
 
 </div>
 
