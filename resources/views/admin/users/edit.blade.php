@@ -2,9 +2,10 @@
 
 
 @section('content')
-<h1 class="text-center mb-3">Create New User</h1>
+<h1 class="text-center mb-3">Edit  User</h1>
 <div class="card p-5">
-<form method="POST" action="{{route('admin.users.store')}}">
+<form method="POST" action="{{route('admin.users.update')}}">
+  @method('PATCH')
   @include('admin.users.partials.form')
       </form>
     </div>
