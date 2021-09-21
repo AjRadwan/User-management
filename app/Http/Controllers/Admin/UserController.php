@@ -15,11 +15,15 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index() {
+    public function index(){
         if(Gate::denies('logged-in')){
             dd('no acces');
         }
-       return view('admin.users.index', ['users' => User::paginate(12)]);
+
+        if(Gate::allows('is-admin')){
+            return view('admin.users.index', ['users' => User::paginate(12)]);
+        }
+      dd('You need to be admin');
     }
 
     /**
