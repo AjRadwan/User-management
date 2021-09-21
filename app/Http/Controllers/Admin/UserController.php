@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
 use Illuminate\Support\Facades\Gate;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Controllers\Controller;
@@ -71,11 +70,8 @@ class UserController extends Controller
          [
             'roles' => Role::all(),
             'user' => User::find($id),
-       
-
-        ]);    
-      
-    }
+           ]);    
+       }
 
     /**
      * Update the specified resource in storage.
@@ -84,12 +80,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, $id){
         $user = User::findOrFail($id);
         $user->update($request->except(['_token', 'roles']));
         $user->roles()->sync($request->roles);
-       $request->session()->flash('success', 'The User Has been Update');
+        $request->session()->flash('success', 'The User Has been Update');
 
         return redirect(route('admin.users.index'));
     }
